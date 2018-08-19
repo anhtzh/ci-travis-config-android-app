@@ -2,6 +2,18 @@ language: android
 jdk: oraclejdk8
 sudo: false
 
+notifications:
+  email:
+    recipients:
+      - hunganhtr@gmail.com
+    on_success: change
+    on_failure: always
+
+env:
+ global:
+  - ANDROID_API=27
+  - ANDROID_BUILD_TOOLS=27.0.3
+ 
 android:
   components:
     # Uncomment the lines below if you want to
@@ -10,16 +22,16 @@ android:
     - platform-tools
     
     # The BuildTools version used by your project
-    - build-tools-27.0.3
+    - build-tools-${ANDROID_BUILD_TOOLS}
     
     # The SDK version used to compile your project
-    - android-27
+    - android-${ANDROID_API}
     
     # Additional components
     - extra-google-google_play_services
     - extra-google-m2repository
     - extra-android-m2repository
-    - addon-google_apis-google-27
+    - addon-google_apis-google-${ANDROID_API}
     
     # Specify at least one system image,
     # if you need to run emulator(s) during your tests
@@ -44,6 +56,10 @@ cache:
     - $HOME/.gradle/wrapper/
     - $HOME/.android/build-cache
 
+before_install:
+  # accept all licenses
+  - yes | sudo sdkmanager --licenses
+
 #before_script:
   ## Create and start emulator
   #- echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
@@ -51,4 +67,5 @@ cache:
   #- android-wait-for-emulator
   #- adb shell input keyevent 82 &
 
-script: ./gradlew test
+script:
+   - ./gradlew clean test build
