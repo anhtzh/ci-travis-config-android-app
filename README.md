@@ -1,0 +1,2 @@
+#travis_ci_setup_with_android_app
+
