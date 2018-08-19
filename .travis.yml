@@ -58,9 +58,11 @@ cache:
 
 before_install:
   - chmod +x gradlew
-  # accept all licenses
   - sdkmanager --list
-  - yes | sdkmanager --licenses || true
+  - echo yes | sdkmanager "build-tools;28.0.0" "platforms;android-28"
+  # accept all licenses
+  #- sdkmanager --list
+  #- yes | sdkmanager --licenses || true
   # DON'T ADD unless you are getting "Install missing components using SDK manager" 
   # or if using Constraint Layout
   - ./gradlew dependencies || true 
