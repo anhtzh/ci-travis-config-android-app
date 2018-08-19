@@ -59,7 +59,8 @@ cache:
 before_install:
   - chmod +x gradlew
   # accept all licenses
-  - yes | tools/bin/sdkmanager --licenses
+  - sdkmanager --list
+  - yes | sdkmanager --licenses || true
   # DON'T ADD unless you are getting "Install missing components using SDK manager" 
   # or if using Constraint Layout
   - ./gradlew dependencies || true 
