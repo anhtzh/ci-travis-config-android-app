@@ -59,7 +59,7 @@ cache:
 before_install:
   - chmod +x gradlew
   #- sdkmanager --list # help to list all available
-  - echo yes | sdkmanager "build-tools;28" "platforms;android-28"
+  - echo yes | sdkmanager "platforms;android-28" #"build-tools;28.0.0"
   # accept all licenses
   # '--licenses' is no more valid
   #- yes | sdkmanager --licenses || true
