@@ -1,6 +1,6 @@
 language: android
 jdk: oraclejdk8
-sudo: required
+sudo: false
 
 notifications:
   email:
@@ -59,7 +59,7 @@ cache:
 before_install:
   - chmod +x gradlew
   # accept all licenses
-  - yes | sudo sdkmanager --licenses
+  - yes | sdkmanager --licenses
   # DON'T ADD unless you are getting "Install missing components using SDK manager" 
   # or if using Constraint Layout
   - ./gradlew dependencies || true 
