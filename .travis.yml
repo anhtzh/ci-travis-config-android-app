@@ -5,7 +5,7 @@ sudo: false
 notifications:
   email:
     recipients:
-      - hunganhtr@gmail.com
+      - anh.tran@quoine.com
     on_success: change
     on_failure: always
 
